@@ -6,7 +6,7 @@ const testService = {
                 host: 'localhost', //数据库地址
                 user: "root", //数据库用户
                 password: "sj123654", //数据库密码
-                database: 'demo' //需要连接的数据库
+                database: 'booksystem' //需要连接的数据库
             });
             
             connection.connect(); //连接数据库
