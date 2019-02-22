@@ -1,7 +1,7 @@
 const router = require('koa-router')()
 // const login =require('../servers/login')
-const loginController =require('../../controllers/loginControllers')
 const loginRouter = require('./loginRouter');
+const adminRouter = require('./adminRouter');
 
 // //登陆login接口
 // router.post('/Login', async (ctx, next) => {
@@ -11,4 +11,5 @@ const loginRouter = require('./loginRouter');
 // })
 
 router.use("/Login", loginRouter.routes(),loginRouter.allowedMethods());
+router.use("/Admin", adminRouter.routes(),adminRouter.allowedMethods());
 module.exports = router
