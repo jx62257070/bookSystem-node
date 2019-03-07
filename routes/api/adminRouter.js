@@ -8,4 +8,6 @@ router.post("/addBook", controller.addBook);
 router.post("/searchBook", controller.searchBook);
 //删除书籍
 router.post("/delBook", controller.delBook);
+//删除书籍
+router.post("/updateBook", controller.updateBook);
 module.exports = router

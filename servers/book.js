@@ -4,14 +4,6 @@ const book={
     async getBookList(){
         let states = `select * from book`;
         let bookList=await data.getAllDataMySQL(states);
-        bookList.forEach(function(item){
-            item.bookName = item.book_name;
-            delete item.book_name;     
-            if(item.press_date != "0000-00-00"){
-                item.pressTime =item.press_date.getFullYear() + "-" + (item.press_date.getMonth() + 1) + "-" + item.press_date.getDate();
-                delete item.press_date;
-            }else item.pressTime == ''
-        })
         return bookList
     },
     async addBook(bookData){
@@ -31,15 +23,21 @@ const book={
         let bookData=await data.linkMySQL(states);    
         if(bookData==undefined){
             return "no book"
-        }else{
-            bookData.press_date =bookData.press_date.getFullYear() + "-" + (bookData.press_date.getMonth() + 1) + "-" + bookData.press_date.getDate();;
-            return bookData
         }
+        return bookData
     },
     async delBook(bookISBN){
         let states=`delete from book where ISBN="${bookISBN}"`
         let bookData=await data.linkMySQL(states);
         return bookData
+    },
+    async updateBook(bookData){
+        if(bookData.pressTime=='NaN-NaN-NaN') bookData.pressTime='0000-00-00'
+        let states=`update book set book_name="${bookData.bookName}",author="${bookData.author}",type="${bookData.type}",press="${bookData.press}",press_date="${bookData.pressTime}",price="${bookData.price}",stock="${bookData.stock}",position="${bookData.position}",note="${bookData.note}" where ISBN="${bookData.ISBN}"`
+        let res=await data.linkMySQL(states);
+        if(res==undefined)
+        return "success"
+        else ""
     }
 }
 
