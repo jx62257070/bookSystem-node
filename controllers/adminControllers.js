@@ -18,8 +18,12 @@ var controller = {
     },
     searchBook:async function (ctx, next) {
         let result=await bookService.searchBook(ctx.request.body.ISBN)
-        let book=new bookModel(result)
-        ctx.rest(200,"",book)
+        if(result=="no book") ctx.rest(200,"",result)
+        else {
+            let book=new bookModel(result)
+            ctx.rest(200,"",book)
+        }
+
     },
     delBook:async function (ctx, next) {
         let result=await bookService.delBook(ctx.request.body.ISBN)

@@ -12,7 +12,7 @@ class book{
         this.note= bizModels.note
     }
     checkTime(time){
-        if (time == "0000-00-00") time = ""
+        if (time == "0000-00-00"||time==undefined) time = ""
         else time =time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate();
         return time
     }
