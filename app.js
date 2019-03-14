@@ -27,7 +27,7 @@ app.use(views(__dirname + '/views', {
   extension: 'html'
 }))
 
-
+//封装response
 app.use(rest.restify('/Api'));
 
 // logger

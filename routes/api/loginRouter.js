@@ -1,7 +1,8 @@
 const router = require('koa-router')();
 const controller = require('../../controllers/loginControllers');
-// 获取首页活动列表
+// 登陆
 router.post("/login", controller.login);
+//注册
 router.post("/register", controller.register);
 
 module.exports = router
