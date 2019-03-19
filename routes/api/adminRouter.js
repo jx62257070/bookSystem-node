@@ -10,4 +10,10 @@ router.post("/searchBook", controller.searchBook);
 router.post("/delBook", controller.delBook);
 //更新书籍
 router.post("/updateBook", controller.updateBook);
+// 获取用户列表
+router.post("/getUserList", controller.getUserList);
+// 搜索用户
+router.post("/searchUser", controller.searchUser);
+// 更新用户
+router.post("/updateUser", controller.updateUser);
 module.exports = router

@@ -1,4 +1,4 @@
-const data = require('../utils/testMysql');
+const Mysql = require('../utils/testMysql');
 const util = require('../utils/util');
 const login = {
     async login(bodyData) {
@@ -10,7 +10,7 @@ const login = {
         } else {
             states = `select * from user where user_id="${bodyData.name}"`;
         }
-        let res = await data.linkMySQL(states); //获取数据库数据
+        let res = await Mysql.linkMySQL(states); //获取数据库数据
         let returnData = {
             state: "",
             data: '',
