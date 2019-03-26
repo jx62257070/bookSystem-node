@@ -1,4 +1,5 @@
 const Mysql = require('../utils/testMysql');
+const utils = require('../utils/util')
 
 const book={
     async getBookList(){
@@ -12,6 +13,10 @@ const book={
         let canAdd=await Mysql.linkMySQL(states);    
         if(canAdd==undefined){
             states = `INSERT INTO book(ISBN,book_name,author,type,press,press_date,price,stock,position,note)VALUES("${bookData.ISBN}","${bookData.bookName}","${bookData.author}","${bookData.type}","${bookData.press}","${bookData.pressTime}","${bookData.price}","${bookData.stock}","${bookData.position}","${bookData.note}");`;
+            let res=await Mysql.linkMySQL(states);
+            let addTime =new Date()
+            let SQLTime = utils.changeTimeDetil(addTime)
+            states = `INSERT INTO admin_book(admin_id,ISBN,add_time)VALUES("${bookData.adminId}","${bookData.ISBN}","${SQLTime}");`
             let res=await Mysql.linkMySQL(states);
             return "success"
         }else{
