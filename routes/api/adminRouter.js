@@ -16,4 +16,8 @@ router.post("/getUserList", controller.getUserList);
 router.post("/searchUser", controller.searchUser);
 // 更新用户
 router.post("/updateUser", controller.updateUser);
+// 获取管理员列表
+router.post("/getAdminList", controller.getAdminList);
+// 搜索管理员
+router.post("/searchAdmin", controller.searchAdmin);
 module.exports = router

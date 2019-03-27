@@ -1,7 +1,11 @@
 const bookService  = require("../servers/book");
-const bookModel =require("../models/bookModel")
 const userService  = require("../servers/user");
+const adminService  = require("../servers/admin");
+const bookModel =require("../models/bookModel")
 const userModel =require("../models/userModel")
+const adminModel =require("../models/adminModel")
+
+
 var controller = {
     getBookList:async function (ctx, next){
         // var body=ctx.request.body;
@@ -71,7 +75,24 @@ var controller = {
             ctx.rest(1000, "更新用户异常", null);
             throw err;
         }
-
+    },
+    getAdminList:async function (ctx, next){
+        // var body=ctx.request.body;
+        let result=await adminService.getAdminList()
+        let adminList=[]
+        result.forEach(item => {
+            let book=new adminModel(item)
+            adminList.push(book)
+        });
+        ctx.rest(200,"",adminList)
+    },
+    searchAdmin:async function (ctx, next) {    
+        let result=await adminService.searchAdmin(ctx.request.body.adminId)
+        if(result=="no user") ctx.rest(200,"",result)
+        else {
+            let user=new adminModel(result)
+            ctx.rest(200,"",user)
+        }
     },
 }
 module.exports = controller;
