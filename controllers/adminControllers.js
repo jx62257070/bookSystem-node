@@ -69,7 +69,7 @@ var controller = {
     },
     updateUser:async function (ctx, next) {
         try {
-            let result=await userService.updateBook(ctx.request.body)
+            let result=await userService.updateUser(ctx.request.body)
             ctx.rest(200,"",result)
         } catch (err) {
             ctx.rest(1000, "更新用户异常", null);
@@ -92,6 +92,15 @@ var controller = {
         else {
             let user=new adminModel(result)
             ctx.rest(200,"",user)
+        }
+    },
+    updateAdmin:async function (ctx, next) {
+        try {
+            let result=await adminService.updateAdmin(ctx.request.body)
+            ctx.rest(200,"",result)
+        } catch (err) {
+            ctx.rest(1000, "更新用户异常", null);
+            throw err;
         }
     },
 }

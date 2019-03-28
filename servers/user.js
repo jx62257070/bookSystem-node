@@ -13,8 +13,8 @@ const user = {
         }
         return userData
     },
-    async updateBook(bookData){
-        let states=`update user set user_name="${bookData.userName}",password="${bookData.password}",user_sex="${bookData.userSex}",user_dept="${bookData.userDept}",note="${bookData.note}" where user_id="${bookData.userId}"`
+    async updateUser(userData){
+        let states=`update user set user_name="${userData.userName}",password="${userData.password}",user_sex="${userData.userSex}",user_dept="${userData.userDept}",note="${userData.note}" where user_id="${userData.userId}"`
         let res=await Mysql.linkMySQL(states);
         if(res==undefined)
         return "success"

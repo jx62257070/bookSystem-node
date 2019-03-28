@@ -13,5 +13,12 @@ const admin = {
         }
         return adminData
     },
+    async updateAdmin(adminData){
+        let states=`update admin set admin_name="${adminData.adminName}",password="${adminData.password}",admin_sex="${adminData.adminSex}",admin_phone="${adminData.adminPhone}",permission="${adminData.permission}",note="${adminData.note}" where admin_id="${adminData.adminId}"`
+        let res=await Mysql.linkMySQL(states);
+        if(res==undefined)
+        return "success"
+        else ""
+    }
 }
 module.exports = admin;

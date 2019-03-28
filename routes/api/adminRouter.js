@@ -20,4 +20,6 @@ router.post("/updateUser", controller.updateUser);
 router.post("/getAdminList", controller.getAdminList);
 // 搜索管理员
 router.post("/searchAdmin", controller.searchAdmin);
+// 更新管理员
+router.post("/updateAdmin", controller.updateAdmin);
 module.exports = router
