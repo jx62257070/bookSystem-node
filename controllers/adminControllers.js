@@ -1,6 +1,7 @@
 const bookService  = require("../servers/book");
 const userService  = require("../servers/user");
 const adminService  = require("../servers/admin");
+const BRService  = require("../servers/BR");
 const bookModel =require("../models/bookModel")
 const userModel =require("../models/userModel")
 const adminModel =require("../models/adminModel")
@@ -100,6 +101,24 @@ var controller = {
             ctx.rest(200,"",result)
         } catch (err) {
             ctx.rest(1000, "更新用户异常", null);
+            throw err;
+        }
+    },
+    borrowBook:async function (ctx, next) {
+        try {
+            let result=await BRService.borrowBook(ctx.request.body)
+            ctx.rest(200,"",result)
+        } catch (err) {
+            ctx.rest(1000, "借书操作异常", null);
+            throw err;
+        }
+    },
+    returnBook:async function (ctx, next) {
+        try {
+            let result=await BRService.returnBook(ctx.request.body)
+            ctx.rest(200,"",result)
+        } catch (err) {
+            ctx.rest(1000, "还书操作异常", null);
             throw err;
         }
     },
