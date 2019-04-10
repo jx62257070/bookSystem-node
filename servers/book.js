@@ -43,7 +43,13 @@ const book={
         if(res==undefined)
         return "success"
         else ""
-    }
+    },
+    async getBookListByType(type){
+        let states = `select * from book where type="${type}"`;
+        let bookList=await Mysql.getAllDataMySQL(states);
+        return bookList
+    },
+
 }
 
 module.exports = book;
