@@ -104,6 +104,17 @@ var controller = {
             throw err;
         }
     },
+    addAdmin:async function (ctx, next){
+        var body=ctx.request.body;
+        try {
+            let result=await adminService.addAdmin(body)
+            ctx.rest(200,"",result)
+        } catch (err) {
+            ctx.rest(1000, "添加用户异常", null);
+            throw err;
+        }
+
+    },
     borrowBook:async function (ctx, next) {
         try {
             let result=await BRService.borrowBook(ctx.request.body)

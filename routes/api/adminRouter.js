@@ -22,6 +22,8 @@ router.post("/getAdminList", controller.getAdminList);
 router.post("/searchAdmin", controller.searchAdmin);
 // 更新管理员
 router.post("/updateAdmin", controller.updateAdmin);
+// 添加管理员
+router.post("/addAdmin", controller.addAdmin);
 // 借书
 router.post("/borrowBook", controller.borrowBook);
 // 还书
