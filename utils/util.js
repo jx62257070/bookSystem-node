@@ -46,7 +46,10 @@ const util = {
     let Y2 = time.getFullYear()
     let M2 = ((time.getMonth() + 1) > 10 ? (time.getMonth() + 1) : '0' + (time.getMonth() + 1))
     let D2 = (time.getDate() > 10 ? time.getDate() : '0' + time.getDate())
-    let timer = Y2 + '-' + M2 + '-' + D2 // 之前的7天或者30天
+    let hour = time.getHours(); //获取当前小时
+    let min = time.getMinutes(); //获取当前分钟
+    let second = time.getSeconds(); //获取当秒
+    let timer = `${Y2}-${M2}-${D2} ${hour}:${min}:${second}`// 之前的7天或者30天
     return timer
   },
 }

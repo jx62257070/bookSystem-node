@@ -17,7 +17,7 @@ const book={
             let addTime =new Date()
             let SQLTime = utils.changeTimeDetil(addTime)
             states = `INSERT INTO admin_book(admin_id,ISBN,add_time)VALUES("${bookData.adminId}","${bookData.ISBN}","${SQLTime}");`
-            let res=await Mysql.linkMySQL(states);
+            res=await Mysql.linkMySQL(states);
             return "success"
         }else{
             return "added" 
